@@ -1,0 +1,11 @@
+response_id,country,age_group,education_level,ai_trust_score,usage_frequency,adoption_willingness
+1,BD,25-34,Bachelor,7,Daily,8
+2,JP,35-44,Master,8,Daily,9
+3,KE,18-24,Bachelor,6,Weekly,7
+4,BD,45-54,PhD,5,Monthly,6
+5,JP,25-34,Bachelor,9,Daily,9
+6,KE,25-34,Master,7,Weekly,8
+7,BD,18-24,Bachelor,6,Weekly,7
+8,JP,35-44,PhD,8,Daily,8
+9,KE,45-54,Bachelor,5,Monthly,6
+10,BD,25-34,Master,7,Daily,8
