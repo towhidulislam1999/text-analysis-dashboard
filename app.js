@@ -994,4 +994,5 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch (error) {
     console.error('❌ Application initialization failed:', error);
   }
+
 });
