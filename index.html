@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Analytics Dashboard - Reflective Writing Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">🏫</div>
+                <h1 class="login-title">学習分析ダッシュボード</h1>
+                <h2 class="login-subtitle">Learning Analytics Dashboard</h2>
+                <p class="login-description">リフレクティブ・ライティング分析システム</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">ユーザー名 / Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-control" 
+                        placeholder="prof_yamada" 
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">パスワード / Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="Enter your password" 
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <div id="loginError" class="error-message hidden"></div>
+                
+                <button type="submit" class="btn btn--primary btn--full-width login-btn">
+                    ログイン / Login
+                </button>
+                
+                <div class="login-help">
+                    <p>デモ用アカウント / Demo Accounts:</p>
+                    <ul>
+                        <li>prof_yamada / analytics2025</li>
+                        <li>prof_suzuki / learning123</li>
+                        <li>prof_tanaka / corpus2025</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="dashboard-container hidden">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">Analytics Dashboard</h2>
+                <p class="course-info">ENG101 - Fall 2025</p>
+                <div class="user-info">
+                    <span id="welcomeMessage">Welcome</span>
+                    <button id="logoutBtn" class="btn btn--outline btn--sm">Logout</button>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li><button class="nav-item active" data-section="overview">
+                    <span class="nav-icon">📊</span>
+                    Overview
+                </button></li>
+                <li><button class="nav-item" data-section="temporal">
+                    <span class="nav-icon">📈</span>
+                    Temporal Trends
+                </button></li>
+                <li><button class="nav-item" data-section="profiles">
+                    <span class="nav-icon">👥</span>
+                    Student Profiles
+                </button></li>
+                <li><button class="nav-item" data-section="comparative">
+                    <span class="nav-icon">📋</span>
+                    Comparative Analytics
+                </button></li>
+                <li><button class="nav-item" data-section="upload">
+                    <span class="nav-icon">📤</span>
+                    File Upload
+                </button></li>
+                <li><button class="nav-item" data-section="guide">
+                    <span class="nav-icon">📖</span>
+                    User Guide
+                </button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="section-header">
+                    <h1>Course Overview</h1>
+                    <p class="section-subtitle">Reflective Writing in Academic Contexts - Fall 2025</p>
+                </div>
+
+                <!-- Key Metrics Cards -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3 class="metric-title">Total Students</h3>
+                        <div class="metric-value">15</div>
+                        <p class="metric-label">Active learners</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Essays Analyzed</h3>
+                        <div class="metric-value">30</div>
+                        <p class="metric-label">Midterm + Final</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Model Accuracy</h3>
+                        <div class="metric-value">84.7%</div>
+                        <p class="metric-label">Classification precision</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3 class="metric-title">Avg Engagement</h3>
+                        <div class="metric-value">68.2%</div>
+                        <p class="metric-label">Self-assessment + Elaboration</p>
+                    </div>
+                </div>
+
+                <!-- AI Insights Section -->
+                <div class="card insights-card">
+                    <div class="card__header">
+                        <h3>🤖 AI-Generated Insights</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="insights-grid">
+                            <div class="insight-item">
+                                <h4>Key Finding</h4>
+                                <p>Class shows significant improvement in self-assessment discourse moves (average increase of 18.3% from midterm to final)</p>
+                            </div>
+                            <div class="insight-item">
+                                <h4>Recommendation</h4>
+                                <p>Consider implementing targeted interventions for students showing declining discourse move patterns</p>
+                            </div>
+                            <div class="insight-item">
+                                <h4>Risk Assessment</h4>
+                                <p>3 students showing >20% decline in discourse engagement require immediate attention</p>
+                            </div>
+                            <div class="insight-item">
+                                <h4>Confidence Level</h4>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" style="width: 89%"></div>
+                                    <span>89%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert Cards -->
+                <div class="card alert-card">
+                    <div class="card__header">
+                        <h3>⚠️ Students Requiring Attention</h3>
+                    </div>
+                    <div class="card__body">
+                        <div id="declining-students" class="alert-list">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Temporal Trends Section -->
+            <section id="temporal" class="content-section">
+                <div class="section-header">
+                    <h1>Temporal Trends Analysis</h1>
+                    <p class="section-subtitle">Class-wide progress from midterm to final essays</p>
+                </div>
+
+                <div class="charts-container">
+                    <div class="card chart-card">
+                        <div class="card__header">
+                            <h3>Discourse Move Trends</h3>
+                            <button class="btn btn--outline btn--sm export-btn" data-chart="trends">Export Chart</button>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container" style="position: relative; height: 400px;">
+                                <canvas id="trendsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card">
+                        <div class="card__header">
+                            <h3>Change Distribution</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="distributionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Profiles Section -->
+            <section id="profiles" class="content-section">
+                <div class="section-header">
+                    <h1>Student Profiles</h1>
+                    <p class="section-subtitle">Individual student engagement analysis</p>
+                </div>
+
+                <div class="controls-section">
+                    <div class="search-filter">
+                        <input type="text" id="studentSearch" class="form-control" placeholder="Search students...">
+                        <select id="statusFilter" class="form-control">
+                            <option value="all">All Status</option>
+                            <option value="improving">Improving</option>
+                            <option value="stable">Stable</option>
+                            <option value="declining">Declining</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="students-grid">
+                    <div id="studentsTable" class="students-table">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Student Detail Modal -->
+                <div id="studentModal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="modalStudentName">Student Details</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="student-details">
+                                <div class="detail-charts">
+                                    <div class="chart-container" style="position: relative; height: 250px;">
+                                        <canvas id="studentProgressChart"></canvas>
+                                    </div>
+                                    <div class="chart-container" style="position: relative; height: 250px;">
+                                        <canvas id="studentDistributionChart"></canvas>
+                                    </div>
+                                </div>
+                                <div class="sample-sentences">
+                                    <h4>Sample Classified Sentences</h4>
+                                    <div class="sentence-samples">
+                                        <div class="sample-group">
+                                            <h5>Self-Assessment Examples:</h5>
+                                            <ul id="selfAssessmentSamples"></ul>
+                                        </div>
+                                        <div class="sample-group">
+                                            <h5>Elaboration Examples:</h5>
+                                            <ul id="elaborationSamples"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparative Analytics Section -->
+            <section id="comparative" class="content-section">
+                <div class="section-header">
+                    <h1>Comparative Analytics</h1>
+                    <p class="section-subtitle">Cohort benchmarking and statistical analysis</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="card chart-card">
+                        <div class="card__header">
+                            <h3>Midterm vs Final Comparison</h3>
+                            <button class="btn btn--outline btn--sm export-btn" data-chart="comparison">Export</button>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container" style="position: relative; height: 350px;">
+                                <canvas id="comparisonChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card">
+                        <div class="card__header">
+                            <h3>Individual Progress Scatter</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container" style="position: relative; height: 350px;">
+                                <canvas id="scatterChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card stats-card">
+                    <div class="card__header">
+                        <h3>Statistical Summary</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="stats-grid" id="statisticalSummary">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- File Upload Section -->
+            <section id="upload" class="content-section">
+                <div class="section-header">
+                    <h1>File Upload</h1>
+                    <p class="section-subtitle">Upload student essay files for analysis</p>
+                </div>
+
+                <div class="upload-section">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Upload New Essays</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-icon">📁</div>
+                                <h4>Drag & drop files here or click to browse</h4>
+                                <p>Supported formats: CSV, TXT</p>
+                                <input type="file" id="fileInput" class="file-input" accept=".csv,.txt" multiple>
+                                <button class="btn btn--primary" onclick="document.getElementById('fileInput').click()">
+                                    Choose Files
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Recent Uploads</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="upload-history" id="uploadHistory">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Guide Section -->
+            <section id="guide" class="content-section">
+                <div class="section-header">
+                    <h1>User Guide</h1>
+                    <p class="section-subtitle">How to use the Learning Analytics Dashboard</p>
+                </div>
+
+                <div class="guide-content">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Getting Started</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="guide-steps">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Welcome to the Learning Analytics Dashboard</h4>
+                                        <p>This tool helps you analyze student reflective writing using advanced corpus linguistics and machine learning.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Navigate Through Sections</h4>
+                                        <p>Use the sidebar menu to explore various aspects of your students' writing development.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Start with Overview</h4>
+                                        <p>Get a quick summary, then dive deeper into specific analyses using other sections.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Understanding Metrics</h3>
+                            </div>
+                            <div class="card__body">
+                                <dl class="definition-list">
+                                    <dt>Self-Assessment Moves</dt>
+                                    <dd>Sentences where students reflect on their own learning process and progress.</dd>
+                                    
+                                    <dt>Elaboration Moves</dt>
+                                    <dd>Detailed explanations that connect theoretical concepts with practical examples.</dd>
+                                    
+                                    <dt>Engagement Score</dt>
+                                    <dd>Calculated based on the frequency and quality of discourse moves in student writing.</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Best Practices</h3>
+                            </div>
+                            <div class="card__body">
+                                <ul class="best-practices-list">
+                                    <li>Use alerts to prioritize interventions for declining students</li>
+                                    <li>Review AI insights regularly to inform teaching strategies</li>
+                                    <li>Export data for further analysis or sharing</li>
+                                    <li>Upload new essay batches regularly for current analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
