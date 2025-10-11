@@ -2,7 +2,7 @@
 
 # Cross-Cultural AI Interaction Research Project
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/towhidulislam1999/cross-cultural-ai-research)](https://github.com/towhidulislam1999/cross-cultural-ai-research) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub last commit](https://img.shields.io/github/last-commit/towhidulislam1999/text-analysis-dashboard)](https://github.com/towhidulislam1999/text-analysis-dashboard) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 📋 Project Overview
 
@@ -63,26 +63,27 @@ This study employs a mixed-methods approach combining quantitative analysis thro
 - **Statistical Analysis**: R integration for advanced modeling
 
 ## 📁 Repository Structure
+
 ```
-├── README.md                # Project documentation
-├── data/                    # Research datasets
-│   ├── survey-responses/    # Raw survey data by country
-│   ├── processed/           # Cleaned and analyzed data
-│   └── metadata/            # Data dictionaries and codebooks
-├── analysis/                # Statistical analysis scripts
-│   ├── descriptive-stats.py # Basic statistical analysis
-│   ├── sem-modeling.R       # Structural equation models
-│   └── cross-cultural-analysis.py # Comparative analysis
-├── dashboard/               # Interactive dashboard code
-│   ├── frontend/            # Web interface components
-│   ├── backend/             # Data processing APIs
-│   └── visualizations/      # Chart and graph components
-├── documentation/           # Research documentation
-│   ├── methodology.md       # Detailed research methods
-│   ├── literature-review.md # Background research
-│   └── findings/            # Results and conclusions
-├── presentations/           # Conference and academic presentations
-└── requirements.txt         # Python dependencies
+├── README.md                  # Project documentation
+├── data/                      # Research datasets
+│   ├── survey-responses/      # Raw survey data by country
+│   ├── processed/             # Cleaned and analyzed data
+│   └── metadata/              # Data dictionaries and codebooks
+├── analysis/                  # Statistical analysis scripts
+│   ├── descriptive-stats.py   # Basic statistical analysis
+│   ├── sem-modeling.R         # Structural equation models
+│   └── cross-cultural-analysis.py  # Comparative analysis
+├── dashboard/                 # Interactive dashboard code
+│   ├── frontend/              # Web interface components
+│   ├── backend/               # Data processing APIs
+│   └── visualizations/        # Chart and graph components
+├── documentation/             # Research documentation
+│   ├── methodology.md         # Detailed research methods
+│   ├── literature-review.md   # Background research
+│   └── findings/              # Results and conclusions
+├── presentations/             # Conference and academic presentations
+└── requirements.txt           # Python dependencies
 ```
 
 ## 📊 Sample Data Available
@@ -114,8 +115,8 @@ For more details about the sample datasets, see the [data directory README](data
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/towhidulislam1999/cross-cultural-ai-research.git
-cd cross-cultural-ai-research
+git clone https://github.com/towhidulislam1999/text-analysis-dashboard.git
+cd text-analysis-dashboard
 ```
 
 2. **Install Python dependencies**
@@ -218,7 +219,7 @@ If you use this research or code in your work, please cite:
   author={Islam, Towhidul},
   year={2025},
   institution={University of Dhaka},
-  url={https://github.com/towhidulislam1999/cross-cultural-ai-research}
+  url={https://github.com/towhidulislam1999/text-analysis-dashboard}
 }
 ```
 
@@ -228,7 +229,7 @@ If you use this research or code in your work, please cite:
 Graduate Student, Japanese Studies  
 University of Dhaka, Bangladesh
 
-- 📧 Email: [your-email@example.com]
+- 📧 Email: [your-email@example.com](mailto:your-email@example.com)
 - 🔗 LinkedIn: [your-linkedin-profile]
 - 🎓 Academic Profile: [your-academic-profile]
 - 🐦 Twitter: [@your-twitter-handle]
@@ -236,7 +237,6 @@ University of Dhaka, Bangladesh
 ## 🎓 Academic Context
 
 This research is conducted as part of:
-
 - **Master's Application Portfolio** for Japanese universities (APU, Nagoya University, Tsukuba University)
 - **Cross-Cultural AI Studies** research initiative
 - **Learning Analytics** in multicultural contexts
