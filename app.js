@@ -90,7 +90,6 @@ function initializeInstructionsPanel() {
 }
 function initializeLogin() {
   console.log('🔐 Initializing login system...');
-  initializeInstructionsPanel();
   
   const loginForm = document.getElementById('loginForm');
   const usernameInput = document.getElementById('username');
@@ -367,7 +366,10 @@ function loadSectionContent(section) {
       loadFileUploadContent();
       break;
     case 'guide':
-      // User guide is static, no dynamic loading needed
+      // Initialize the instructions panel dropdowns when User Guide is shown
+      setTimeout(() => {
+        initializeInstructionsPanel();
+      }, 0);
       break;
   }
 }
