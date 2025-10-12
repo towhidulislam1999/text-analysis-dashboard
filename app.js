@@ -51,8 +51,46 @@ let filteredStudents = [...appData.students];
 let currentUser = null;
 
 // LOGIN FUNCTIONALITY - MUST WORK RELIABLY
+// How-to-Use Guide Expand/Collapse Logic
+function initializeInstructionsPanel() {
+  const panel = document.getElementById('instructions');
+  if (!panel) return;
+  const items = panel.querySelectorAll('.instruction-item');
+  items.forEach(item => {
+    const header = item.querySelector('.instruction-header');
+    const content = item.querySelector('.instruction-content');
+    if (!header || !content) return;
+    header.addEventListener('click', () => {
+      const expanded = header.getAttribute('aria-expanded') === 'true';
+      // Collapse all others
+      items.forEach(i => {
+        i.classList.remove('open');
+        const h = i.querySelector('.instruction-header');
+        const c = i.querySelector('.instruction-content');
+        if (h && c) {
+          h.setAttribute('aria-expanded', 'false');
+          c.setAttribute('aria-hidden', 'true');
+        }
+      });
+      // Expand this one if it was not already open
+      if (!expanded) {
+        item.classList.add('open');
+        header.setAttribute('aria-expanded', 'true');
+        content.setAttribute('aria-hidden', 'false');
+      }
+    });
+    // Keyboard accessibility
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        header.click();
+      }
+    });
+  });
+}
 function initializeLogin() {
   console.log('🔐 Initializing login system...');
+  initializeInstructionsPanel();
   
   const loginForm = document.getElementById('loginForm');
   const usernameInput = document.getElementById('username');
