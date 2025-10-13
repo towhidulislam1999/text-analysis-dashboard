@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  // Get these values from Project Settings > General > Your Apps > SDK setup
+  // Get these values from Firebase Console > Project Settings > Web configuration
   apiKey: "your-api-key",
   authDomain: "text-analysis-dashboard.firebaseapp.com",
   projectId: "text-analysis-dashboard",
@@ -11,8 +11,5 @@ const firebaseConfig = {
   appId: "your-app-id"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication
 export const auth = getAuth(app);
