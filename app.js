@@ -1,3 +1,5 @@
+import { showSuccess, showError, showInfo, ToastContainer } from "./utils/ToastUtils";
+
 // Application data
 const appData = {
   "teachers": [
@@ -192,11 +194,7 @@ function initializeLogin() {
 
 function showLoginError(message) {
   console.log('⚠️ Showing login error:', message);
-  const errorMessage = document.getElementById('loginError');
-  if (errorMessage) {
-    errorMessage.textContent = message;
-    errorMessage.classList.remove('hidden');
-  }
+  showError(message);
 }
 
 function hideLoginScreen() {
@@ -217,6 +215,9 @@ function showDashboard() {
     dashboardPage.classList.remove('hidden');
     console.log('✅ Dashboard shown');
     
+    // Add success toast for login
+    showSuccess(`Welcome back, ${currentUser.name}!`);
+    
     // Update welcome message
     updateWelcomeMessage();
     
@@ -225,6 +226,7 @@ function showDashboard() {
     
   } else {
     console.error('❌ Dashboard page element not found');
+    showError('Failed to load dashboard. Please refresh the page.');
   }
 }
 
@@ -979,11 +981,10 @@ function initializeFileUpload() {
 
 function handleFileUpload(files) {
   console.log('Files selected for upload:', files.length);
-  // Simulate file upload process
   Array.from(files).forEach(file => {
     console.log('Processing file:', file.name);
-    // In a real application, you would upload the file to a server
-    alert(`File "${file.name}" uploaded successfully! (This is a demo)`);
+    // Replace alert with toast
+    showSuccess(`File "${file.name}" uploaded successfully!`);
   });
 }
 
@@ -1021,18 +1022,17 @@ function exportChart(chartType) {
 // Initialize application when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🚀 Application starting...');
-  console.log('📊 Dashboard data loaded:', appData.students.length, 'students');
   
-  try {
-    // Initialize login system first
-    initializeLogin();
-    
-    // Initialize logout functionality
-    initializeLogout();
-    
-    console.log('✅ Application initialization completed');
-  } catch (error) {
-    console.error('❌ Application initialization failed:', error);
-  }
-
+  const app = document.createElement('div');
+  app.className = 'App';
+  // ...existing app content...
+  
+  // Add ToastContainer
+  document.body.appendChild(app);
+  const toastContainer = document.createElement('div');
+  toastContainer.id = 'toast-container';
+  document.body.appendChild(toastContainer);
+  
+  // Initialize toast container
+  new ToastContainer();
 });
