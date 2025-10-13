@@ -1,7 +1,8 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Toast configuration
+console.log("Toast Utils loaded"); // Debug log
+
 const toastConfig = {
   position: "top-right",
   autoClose: 5000,
@@ -11,11 +12,15 @@ const toastConfig = {
   draggable: false
 };
 
-// Utility functions
-export const showSuccess = (msg) => toast.success(msg, toastConfig);
-export const showError = (msg) => toast.error(msg, toastConfig);
-export const showInfo = (msg) => toast.info(msg, toastConfig);
-export const showWarning = (msg) => toast.warn(msg, toastConfig);
+// Add debug wrapper
+const withDebug = (fn, type) => (msg) => {
+  console.log(`Showing ${type} toast:`, msg);
+  return fn(msg, toastConfig);
+};
 
-// Export ToastContainer component for use in App.js
+export const showSuccess = withDebug(toast.success, 'success');
+export const showError = withDebug(toast.error, 'error');
+export const showInfo = withDebug(toast.info, 'info');
+export const showWarning = withDebug(toast.warn, 'warning');
+
 export { ToastContainer } from "react-toastify";

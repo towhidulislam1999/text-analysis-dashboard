@@ -1,4 +1,4 @@
-import { showSuccess, showError, showInfo, ToastContainer } from "./utils/ToastUtils";
+import { ToastContainer, showSuccess, showError } from "./utils/ToastUtils";
 
 // Application data
 const appData = {
@@ -1023,16 +1023,17 @@ function exportChart(chartType) {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🚀 Application starting...');
   
-  const app = document.createElement('div');
-  app.className = 'App';
-  // ...existing app content...
+  // Test toast functionality
+  setTimeout(() => {
+    showSuccess("Debug: Toast system test");
+  }, 1000);
   
-  // Add ToastContainer
-  document.body.appendChild(app);
-  const toastContainer = document.createElement('div');
-  toastContainer.id = 'toast-container';
-  document.body.appendChild(toastContainer);
-  
-  // Initialize toast container
-  new ToastContainer();
+  return (
+    <>
+      <div className="App">
+        {/* ...existing code... */}
+      </div>
+      <ToastContainer />
+    </>
+  );
 });
