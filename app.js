@@ -1020,56 +1020,33 @@ function exportChart(chartType) {
 }
 
 // Initialize application when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 Application starting...');
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
   
-  // Test toast functionality
-  setTimeout(() => {
-    showSuccess("Debug: Toast system test");
-  }, 1000);
-  
-  return (
-    <>
-      <div className="App">
-        {/* ...existing code... */}
-      </div>
-      <ToastContainer />
-    </>
-  );
-});
-
-function handleLogin(event) {
-  event.preventDefault();
-  console.log('🔑 Login attempt started');
-
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  console.log('📧 Email provided:', email);
-  console.log('🔒 Password length:', password.length);
-
-  try {
-    // Validate inputs
-    if (!email || !password) {
-      showError('Please provide both email and password');
-      console.log('❌ Login failed: Missing credentials');
-      return;
+  loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    
+    try {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Validate inputs
+      if (!email || !password) {
+        showError('Please enter both email and password');
+        return;
+      }
+      
+      // Attempt login
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      showSuccess('Login successful!');
+      
+      // Show dashboard after successful login
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('dashboardPage').classList.remove('hidden');
+      
+    } catch (error) {
+      console.error('Login error:', error.message);
+      showError(`Login failed: ${error.message}`);
     }
-
-    // Attempt login
-    auth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        console.log('✅ Login successful:', userCredential.user.email);
-        showSuccess('Login successful!');
-        showDashboard();
-      })
-      .catch((error) => {
-        console.error('❌ Login error:', error.code, error.message);
-        showError(`Login failed: ${error.message}`);
-      });
-
-  } catch (error) {
-    console.error('🔥 Unexpected error:', error);
-    showError('An unexpected error occurred');
-  }
-}
+  });
+});
