@@ -1037,3 +1037,39 @@ document.addEventListener('DOMContentLoaded', function() {
     </>
   );
 });
+
+function handleLogin(event) {
+  event.preventDefault();
+  console.log('🔑 Login attempt started');
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  console.log('📧 Email provided:', email);
+  console.log('🔒 Password length:', password.length);
+
+  try {
+    // Validate inputs
+    if (!email || !password) {
+      showError('Please provide both email and password');
+      console.log('❌ Login failed: Missing credentials');
+      return;
+    }
+
+    // Attempt login
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log('✅ Login successful:', userCredential.user.email);
+        showSuccess('Login successful!');
+        showDashboard();
+      })
+      .catch((error) => {
+        console.error('❌ Login error:', error.code, error.message);
+        showError(`Login failed: ${error.message}`);
+      });
+
+  } catch (error) {
+    console.error('🔥 Unexpected error:', error);
+    showError('An unexpected error occurred');
+  }
+}
